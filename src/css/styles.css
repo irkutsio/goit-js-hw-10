@@ -17,4 +17,50 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin-left: 16px;
+  margin-top: 36px;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 16px 0 16px 16px;
+}
+
+p, h3 {
+  font-size: 24px;
+}
+
+ h2 {
+  margin: 0;
+} 
+
+
+.flex {
+  display: flex;
+}
+
+.country > .flex {
+ justify-content: center;
+  gap: 8px;
+}
+
+
+
+.country {
+  width: 600px;
+  padding: 16px;
+  text-align: center;
+  background-color: rgb(233, 208, 172);
+  border-radius: 4%;
+  box-shadow: 10px 5px 5px rgb(242, 124, 124);
+}
+
+.preview-name {
+  margin: 0;
+  margin-left: 8px;
+ 
 }
