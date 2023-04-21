@@ -12,7 +12,6 @@ inputEl.addEventListener('input', debounce(onCountrySearch, DEBOUNCE_DELAY));
 function onCountrySearch() {
   fetchCountries(inputEl.value.trim())
     .then(data => {
-      console.log(data)
       if (data.length > 10) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
@@ -31,7 +30,7 @@ function onCountrySearch() {
     .catch(error =>
       Notiflix.Notify.failure('Oops, there is no country with that name.')
     );
-}
+};
 
 function createMarkUp(countriesArr) {
   return countriesArr
@@ -51,8 +50,7 @@ function createMarkUp(countriesArr) {
  </li>`
   )
   .join('');
-}
-
+};
 
 
 function createPreviewMarkUp(countriesArr) {
@@ -62,6 +60,6 @@ function createPreviewMarkUp(countriesArr) {
       <img width ="50" src="${svg}" alt="${official}"> <p class="preview-name">${official}</p></li>`
     )
     .join('');
-}
+};
 
 
