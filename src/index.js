@@ -22,44 +22,51 @@ function onCountrySearch() {
       } else if (data.length === 1) {
         countryList.innerHTML = createMarkUp(data);
         countryInfo.innerHTML = '';
-      } else {
-        countryInfo.innerHTML = '';
-        countryList.innerHTML = '';
-      }
+      };
     })
-    .catch(error =>
-      Notiflix.Notify.failure('Oops, there is no country with that name.')
-    );
-};
+    .catch(error => {
+      console.log(error);
+      if (error.status === 404) {
+        Notiflix.Notify.failure('Oops, there is no country with that name.');
+        resetMarkup();
+      } else {
+        console.log(error.message);
+        Notiflix.Notify.failure(error.message);
+        resetMarkup();
+      }
+    });
+}
 
 function createMarkUp(countriesArr) {
   return countriesArr
-  .map(
-    ({
-      name: { official },
-      capital,
-      population,
-      flags: { svg },
-      languages,
-    }) => `<li class="country"><div class="flex">
+    .map(
+      ({
+        name: { official },
+        capital,
+        population,
+        flags: { svg },
+        languages,
+      }) => `<li class="country"><div class="flex">
   <img width="50" src="${svg}" alt="${official}">
    <h2>${official}</h2></div>
    <h3>Capital: ${capital} </h3>
    <p>Population: ${population}</p>
    <p>Languages: ${Object.values(languages)}</p>
  </li>`
-  )
-  .join('');
-};
-
+    )
+    .join('');
+}
 
 function createPreviewMarkUp(countriesArr) {
   return countriesArr
     .map(
-      ({  name: { official }, flags:{ svg }}) => `<li class="flex">
+      ({ name: { official }, flags: { svg } }) => `<li class="flex">
       <img width ="50" src="${svg}" alt="${official}"> <p class="preview-name">${official}</p></li>`
     )
     .join('');
-};
+}
 
-
+function resetMarkup() {
+  countryInfo.innerHTML = '';
+  countryList.innerHTML = '';
+}
