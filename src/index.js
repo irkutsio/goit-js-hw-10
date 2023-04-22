@@ -22,7 +22,7 @@ function onCountrySearch() {
       } else if (data.length === 1) {
         countryList.innerHTML = createMarkUp(data);
         countryInfo.innerHTML = '';
-      };
+      }
     })
     .catch(error => {
       console.log(error);
@@ -51,7 +51,7 @@ function createMarkUp(countriesArr) {
    <h2>${official}</h2></div>
    <h3>Capital: ${capital} </h3>
    <p>Population: ${population}</p>
-   <p>Languages: ${Object.values(languages)}</p>
+   <p>Languages: ${Object.values(languages).join(', ')}</p>
  </li>`
     )
     .join('');
